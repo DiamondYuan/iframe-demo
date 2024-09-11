@@ -21,17 +21,16 @@ function cloneStyleElement(originalStyle) {
   }
 
   // 复制内容
-  clonedStyle.textContent = originalStyle.textContent
-    .replaceAll(/(:root)/g, ":host")
-    .replace("background-color: #242424", "")
-    .replace("background-color: #fffff", "");
+  clonedStyle.textContent = originalStyle.textContent.replaceAll(
+    /(:root)/g,
+    ":host"
+  );
 
   return clonedStyle;
 }
 
 const mountComponent = () => {
   const xxx = window.parent.document.createElement("div");
-  xxx.style = "width:100vw;height:100vh;position:fixed;top:0;left:0;";
   const shadowRoot = xxx.attachShadow({ mode: "open" }); // Create Shadow DOM
   const currentStyle = document.querySelectorAll("style");
   Array.from(currentStyle).forEach((item) => {
